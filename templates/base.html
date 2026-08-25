@@ -11,22 +11,21 @@
             <img src="static/images/logo.svg" alt="Logo">
         </div>
         <div class="header-navigation">
-            <a href="index.html">Accueil</a>
-            <a href="broches.html">Broches</a>
-            <a href="echantillon.html">&Eacute;chantillon</a>
+            <a href="/">Accueil</a>
+            <a href="broches">Broches</a>
+            <a href="echantillon">&Eacute;chantillon</a>
         </div>
         <div class="header-login">
             <a href="">Connexion</a>
         </div>
     </header>
-    <div class="page-content">
-        <h1>Matante tricote</h1>
-        <p>
-            Bienvenue dans mon site qui contient des utilitaires sur le tricot
-        </p>
-    </div>
-    <footer class="site-footer">
+    <main>
+        {% block content %}
+        Contenu par défaut. Il sera remplacé par le contenu spécifique de chaque page.
+        {% endblock %}
+    </main>
+{    <footer class="site-footer">
         <p>&#64; 2026 Matante Tricote</p>
     </footer>
 </body>
-</html>
+</html>}

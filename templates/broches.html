@@ -1,24 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matante tricote</title>
-    <link rel="stylesheet" href="static/css/style.css">
-</head>
-<body>
-    <header class="site-header">
-        <div class="logo-container">
-            <img src="static/images/logo.svg" alt="Logo">
-        </div>
-        <div class="header-navigation">
-            <a href="index.html">Accueil</a>
-            <a href="broches.html">Broches</a>
-            <a href="echantillon.html">&Eacute;chantillon</a>
-        </div>
-        <div class="header-login">
-            <a href="">Connexion</a>
-        </div>
-    </header>
+{% extends 'base.html' %}
+{% block content %}
     <div class="page-content">
         <ul>
             <li>Broches &agrave; tricoter 2 mm</li>
@@ -43,8 +24,4 @@
             <li>Broches &agrave; tricoter 15 mm</li>
         </ul>
     </div>
-    <footer class="site-footer">
-        <p>&#64; 2026 Matante Tricote</p>
-    </footer>
-</body>
-</html>
+{% endblock %}
