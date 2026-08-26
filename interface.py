@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -15,3 +15,8 @@ def broches():
 @app.route('/echantillon')
 def echantillon():
     return render_template('echantillon.html')
+
+@app.route('/demo')
+def demo():
+    nom = request.args.get('nom', 'le monde')
+    return f"Bonjour {nom}!"
