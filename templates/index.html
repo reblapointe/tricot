@@ -1,12 +1,37 @@
-{% extends "base.html" %}
-{% block title %}Accueil{% endblock %}
-{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matante tricote</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
 
-<div class="page-content">
-    <h1>Matante tricote</h1>
-    <p>
-        Bienvenue dans mon site qui contient des utilitaires sur le tricot
-    </p>
-</div>
+<body>
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="static/images/logo.svg" alt="Logo">
+        </div>
+        <div class="header-navigation">
+            <a href="/">Accueil</a>
+            <a href="broches">Broches</a>
+            <a href="echantillon">&Eacute;chantillon</a>
+        </div>
+        <div class="header-login">
+            <a href="">Connexion</a>
+        </div>
+    </header>
 
-{% endblock %}
+    <main>
+        <div class="page-content">
+            <h1>Matante tricote</h1>
+            <p>
+                Bienvenue dans mon site qui contient des utilitaires sur le tricot
+            </p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&#64; 2026 Matante Tricote</p>
+    </footer>
+</body>
+</html>
