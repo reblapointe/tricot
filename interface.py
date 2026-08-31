@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from models import modele
 
 app = Flask(__name__)
 
@@ -19,10 +20,10 @@ def donnees():
     df = modele.get_donnees()
     
     # Conversion en listes pour Jinja2
-    columns = df.columns.tolist()
-    rows = df.values.tolist()
-    print(columns)
-    return render_template("echantillon.html", columns=columns, rows=rows)
+    colonne = df.columns.tolist()
+    rangees = df.values.tolist()    
+    moyenne = df["8"].mean()
+    return render_template("echantillon.html", moyenne=moyenne, colonnes=colonne, rangees=rangees)
 
 @app.route('/demo')
 def demo():

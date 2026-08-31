@@ -4,25 +4,25 @@
 <main>
     <div class="page-content">
         <h1>Calcul d'&eacute;chantillon</h1>
-
+        {{ moyenne}}
         <table>
-                <thead>
-                    <tr>
-                        {% for col in columns %}
-                            <th>{{ col }}</th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in rows %}
-                        <tr>
-                            {% for cell in row %}
-                                <td>{{ cell }}</td>
-                            {% endfor %}
-                        </tr>
+            <thead>
+                <tr>
+                    {% for c in colonnes %}
+                    <th>{{ c }}</th>
                     {% endfor %}
-                </tbody>
-            </table>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in rangees %}
+                <tr>
+                    {% for x in r %}
+                    <td>{{ x }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </main>
 
