@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+<main>
+    <div class="page-content">
+        <h1>Tableau périodique</h1>
+        Point de fusion moyen: {{ moyenne }} K
+        <table>
+            <thead>
+                <tr>
+                    {% for c in colonnes %}
+                    <th>{{ c }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in rangees %}
+                <tr>
+                    {% for x in r %}
+                    <td>{{ x }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+{% endblock %}

@@ -17,13 +17,31 @@ def broches():
 @app.route('/echantillon')
 def donnees():
     # Chargement du DataFrame
-    df = modele.get_donnees()
+    df = modele.get_echantillon()
     
     # Conversion en listes pour Jinja2
     colonne = df.columns.tolist()
-    rangees = df.values.tolist()    
+    rangees = df.values.tolist() 
+    # print(rangees)
+    # print(df.to_html())
+
     moyenne = df["8"].mean()
     return render_template("echantillon.html", moyenne=moyenne, colonnes=colonne, rangees=rangees)
+
+
+@app.route('/atomes')
+def atomes():
+    df = modele.get_atomes()[["Element", "Symbol", "AtomicMass", "AtomicNumber", "MeltingPoint", "BoilingPoint"]]
+    
+    # print(df.to_string())
+    # print(df.to_html())
+
+    # print(df["AtomicMass"].mean())
+    # print(df['AtomicMass'].corr(df['AtomicNumber'])) 
+    colonne = df.columns.tolist()
+    rangees = df.values.tolist() 
+    moyenne = df["MeltingPoint"].mean()
+    return render_template("atomes.html", moyenne=moyenne, colonnes=colonne, rangees=rangees)
 
 @app.route('/demo')
 def demo():
