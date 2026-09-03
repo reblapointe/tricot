@@ -2,9 +2,20 @@
 {% block content %}
 <div class="page-content">
     <ul>
-        {% for broche in broches %}
-            <li>Broche à tricoter {{ broche }} mm</li>
-        {% endfor %}
+        <form action="/broches" method="get">
+            <div>
+                <label>Taille :</label>
+                <select name="TailleSigne" id="TailleSigne">
+                    <option value="<" {% if signe=='<' %} selected {% endif %}>&lt;</option>
+                    <option value="=" {% if signe=='=' %} selected {% endif %}>=</option>
+                    <option value=">" {% if signe=='>' %} selected {% endif %}>&gt;</option>
+                </select>
+                <input id="TailleValeur" type="number" step="0.25" name="TailleValeur" value="{{valeur}}">
+            </div>
+            <button type="submit">Filtrer</button>
+            {% for b in broches %}
+            <li>Broche à tricoter {{ b }} mm</li>
+            {% endfor %}
     </ul>
 </div>
 {% endblock %}
