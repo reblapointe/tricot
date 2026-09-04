@@ -10,6 +10,26 @@ body {
     font-family: Arial, sans-serif;
 }
 
+body.clair {
+    background: white;
+    color: black;
+}
+
+body.sombre {
+    background: #222;
+    color: white;
+}
+
+body.matrix {
+    background: black;
+    color: lime;
+}
+
+.erreur {
+    color: red;
+    font-weight: bold;
+}
+
 .site-header {
     display: flex;
     min-height: 10vh;
@@ -93,9 +113,50 @@ input[type="number"] {
     border: 1px solid black;
 }
 
-button[type="submit"] {
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1.25rem 0;
+}
+
+.message-erreur {
+    color: red;
+    text-align: center;
+}
+
+.login-form {
+    width: 30%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    margin: 0.25rem 0;
+}
+
+.form-row label {
+    display: inline-block;
+    width: 25%;
+}
+
+.form-row input {
+    border: 1px solid black;
+}
+
+button {
     background-color: #86efac;
-    padding: 0.5rem;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
     cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
 }

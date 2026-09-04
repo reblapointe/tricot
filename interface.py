@@ -1,12 +1,18 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, make_response
 from models import modele
 
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.route("/")
+def accueil():
+
+    theme = request.cookies.get("theme", "sombre")
+    print(theme)
+    return render_template(
+        "index.html",
+        theme=theme,
+    )
 
 
 @app.route('/broches')
@@ -49,8 +55,6 @@ def atomes():
     
     print(df.to_string())
     print(df["MeltingPoint"].max())
-    # print(df.to_html())
-
     print(df["AtomicMass"].mean())
     print(df['AtomicMass'].corr(df['AtomicNumber'])) 
     colonne = df.columns.tolist()
@@ -64,6 +68,54 @@ def demo():
     nom = request.args.get('nom', 'le monde')
     return f"Bonjour {nom}!"
 
+
+@app.route("/theme")
+def theme():
+    return render_template("theme.html", erreur=None)
+
+
+@app.route("/theme-action", methods=["POST"])
+def theme_action():
+    theme = request.form.get("theme")
+    if not theme:
+        return render_template(
+            "theme.html",
+            erreur="Veuillez choisir un thème."
+        )
+
+    if theme not in ["clair", "sombre", "matrix"]:
+        return render_template(
+            "theme.html",
+            erreur="Thème invalide."
+        )
+
+    response = make_response(redirect("/"))
+    response.set_cookie("theme", theme, max_age=3600)
+
+    return response
+
+
+@app.context_processor
+def inject_theme():
+    return {"theme": request.cookies.get("theme", "clair")}
+
+
+@app.errorhandler(404)
+def page_introuvable(error):
+    return render_template("404.html"), 404
+
+
+@app.before_request
+def avant():
+    print(f"Je reçoit cette requête: {request.method} {request.path} ")
+
+
+@app.after_request
+def apres_requete(response):
+    print(
+        f"J'ai répondu à cette requête {request.method} {request.path} "
+        f"avec le code {response.status_code}")
+    return response
 
 # Démo exception
 

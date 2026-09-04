@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block titre %}
+Choix du thème
+{% endblock %}
+
+{% block content %}
+
+<h1>Choisir un thème</h1>
+
+{% if erreur %}
+<p class="erreur">
+    {{ erreur }}
+</p>
+{% endif %}
+
+<form action="/theme-action" method="POST">  
+
+<select name="theme">
+    <option value="">-- Choisir --</option>
+    <option value="clair">Clair</option>
+    <option value="sombre">Sombre</option>
+    <option value="matrix">Matrix</option>
+</select>
+
+<br><br>
+
+<button type="submit">
+    Appliquer
+</button>
+
+</form>
+
+{% endblock %}
