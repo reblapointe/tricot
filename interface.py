@@ -68,11 +68,11 @@ def demo():
     nom = request.args.get('nom', 'le monde')
     return f"Bonjour {nom}!"
 
+THEMES = ["clair", "sombre", "matante"]
 
 @app.route("/theme")
 def theme():
-    return render_template("theme.html", erreur=None)
-
+    return render_template("theme.html", themes=THEMES, erreur=None)
 
 @app.route("/theme-action", methods=["POST"])
 def theme_action():
@@ -80,13 +80,15 @@ def theme_action():
     if not theme:
         return render_template(
             "theme.html",
+            themes=THEMES,
             erreur="Veuillez choisir un thème."
         )
 
-    if theme not in ["clair", "sombre", "matrix"]:
+    if theme not in THEMES:
         return render_template(
             "theme.html",
-            erreur="Thème invalide."
+            themes=THEMES,
+            erreur="Thème invalide.",
         )
 
     response = make_response(redirect("/"))

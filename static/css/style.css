@@ -160,3 +160,28 @@ button {
 button:hover {
     opacity: 0.8;
 }
+
+
+body.matante {
+    background-color: pink;
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            hotpink,
+            hotpink 10px,
+            pink 10px,
+            pink 20px
+        );
+    color: purple;
+    font-family: "Comic Sans MS", cursive;
+}
+
+body.matante h1 {
+    text-shadow: 2px 2px yellow;
+}
+
+body.matante button {
+    background: fuchsia;
+    color: white;
+    border: 3px dashed yellow;
+}

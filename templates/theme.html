@@ -17,10 +17,9 @@ Choix du thème
 <form action="/theme-action" method="POST">  
 
 <select name="theme">
-    <option value="">-- Choisir --</option>
-    <option value="clair">Clair</option>
-    <option value="sombre">Sombre</option>
-    <option value="matrix">Matrix</option>
+    {% for valeur in themes %}
+    <option value="{{ valeur }}">{{ valeur }}</option>
+    {% endfor %}
 </select>
 
 <br><br>
