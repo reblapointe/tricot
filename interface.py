@@ -99,7 +99,7 @@ def theme_action():
 
 @app.context_processor
 def inject_theme():
-    return {"theme": request.cookies.get("theme", "clair")}
+    return {"theme": request.cookies.get("theme", THEMES[0])}
 
 
 @app.errorhandler(404)

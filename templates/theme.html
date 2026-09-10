@@ -18,10 +18,14 @@ Choix du thème
 
 <select name="theme">
     {% for valeur in themes %}
-    <option value="{{ valeur }}">{{ valeur }}</option>
+        <option value="{{ valeur }}" 
+            {% if valeur == theme %}
+                selected
+            {% endif %}>
+            {{ valeur }}
+        </option>
     {% endfor %}
 </select>
-
 <br><br>
 
 <button type="submit">
