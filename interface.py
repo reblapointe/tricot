@@ -4,15 +4,21 @@ from models import modele
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def accueil():
-
-    theme = request.cookies.get("theme", "sombre")
-    print(theme)
     return render_template(
-        "index.html",
-        theme=theme,
+        "index.html"
     )
+
+# @app.route("/")
+# def accueil():
+#     theme = request.cookies.get("theme", "clair")
+#     print(theme)
+#     return render_template(
+#         "index.html",
+#         theme=theme,
+#     )
 
 
 @app.route('/broches')
