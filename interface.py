@@ -80,6 +80,19 @@ THEMES = ["clair", "sombre", "matante"]
 def theme():
     return render_template("theme.html", themes=THEMES, erreur=None)
 
+from flask import Flask, request
+
+@app.route('/inscription')
+def entree_information():
+    return '''
+    <form method="POST" action="/inscription-action">
+    Nom: <input type="text" name="nom"><br>
+    Prénom: <input type="text" name="prenom"><br>
+    <input type="submit" value="Envoyer">
+    </form>
+    '''
+
+
 @app.route("/theme-action", methods=["POST"])
 def theme_action():
     theme = request.form.get("theme")
@@ -127,19 +140,21 @@ def apres_requete(response):
 
 # Démo exception
 
-# try:
-#     montant = 100
-#     x = 10
-#     y = 0
-#     print(montant / x)
-#     print(montant / y)
-# except ZeroDivisionError as erreur:
-#     print('Erreur de division par zéro : ', erreur)
-# except Exception as erreur:
-#     print('Erreur inconnue : ', erreur)
-# else:
-#     # Bloc de code qui s'exécute si aucune exception n'est levée
-#     print('Aucune exception levée!')
-# finally:
-#     # Bloc de code qui s'exécute toujours, qu'une exception soit levée ou non
-#     print('Ce code sera toujours exécuté.')
+try:
+    montant = 100
+    x = 10
+    y = 0
+    print(montant / x)
+    print(montant / y) # Division par zéro Exception est raised
+    print("J'aime diviser par zéro")
+    raise Exception(message = "Erreur personnalisée")
+except ZeroDivisionError as erreur:
+    print('Erreur de division par zéro : ', erreur)
+except Exception as erreur:
+    print('Erreur inconnue : ', erreur)
+else:
+    # Bloc de code qui s'exécute si aucune exception n'est levée
+    print('Aucune exception levée!')
+finally:
+    # Bloc de code qui s'exécute toujours, qu'une exception soit levée ou non
+    print('Ce code sera toujours exécuté.')

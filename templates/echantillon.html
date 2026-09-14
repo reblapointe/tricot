@@ -1,29 +1,26 @@
 {% extends "base.html" %}
 {% block title %}&Eacute;chantillon{% endblock %}
 {% block content %}
-<main>
-    <div class="page-content">
-        <h1>Calcul d'&eacute;chantillon</h1>
-        {{ moyenne}}
-        <table>
-            <thead>
-                <tr>
-                    {% for c in colonnes %}
-                    <th>{{ c }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in rangees %}
-                <tr>
-                    {% for x in r %}
-                    <td>{{ x }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</main>
+
+<h1>Calcul d'&eacute;chantillon</h1>
+{{ moyenne }}
+<table>
+    <thead>
+        <tr>
+            {% for c in colonnes %}
+            <th>{{ c }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in rangees %}
+        <tr>
+            {% for x in r %}
+            <td>{{ x }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

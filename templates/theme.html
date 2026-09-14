@@ -1,9 +1,5 @@
 {% extends "base.html" %}
-
-{% block titre %}
-Choix du thème
-{% endblock %}
-
+{% block titre %}Choix du thème{% endblock %}
 {% block content %}
 
 <h1>Choisir un thème</h1>
@@ -14,24 +10,22 @@ Choix du thème
 </p>
 {% endif %}
 
-<form action="/theme-action" method="POST">  
-
-<select name="theme">
-    {% for valeur in themes %}
-        <option value="{{ valeur }}" 
-            {% if valeur == theme %}
-                selected
-            {% endif %}>
+<form action="/theme-action" method="POST">
+    <label for="theme">
+        Thème
+    </label>
+    <select name="theme">
+        {% for valeur in themes %}
+        <option value="{{ valeur }}" {% if valeur==theme %} selected {% endif %}>
             {{ valeur }}
         </option>
-    {% endfor %}
-</select>
-<br><br>
-
-<button type="submit">
-    Appliquer
-</button>
-
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <button type="submit">
+        Appliquer
+    </button>
 </form>
 
 {% endblock %}

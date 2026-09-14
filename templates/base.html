@@ -22,10 +22,13 @@
         </div>
     </header>
 
-    {% block content %}
-    Contenu par défaut. Il sera remplacé par le contenu spécifique de chaque page.
-    {% endblock %}
-
+    <main>
+        <div class="page-content">
+            {% block content %}
+            Contenu par défaut. Il sera remplacé par le contenu spécifique de chaque page.
+            {% endblock %}
+        </div>
+    </main>
     <footer class="site-footer">
         <p>&#64; 2026 Matante Tricote</p>
     </footer>
