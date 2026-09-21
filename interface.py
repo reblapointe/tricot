@@ -5,20 +5,12 @@ from models import modele
 app = Flask(__name__)
 
 
+THEMES = ["clair", "sombre", "matrix", "matante"]
+
+
 @app.route("/")
 def accueil():
-    return render_template(
-        "index.html"
-    )
-
-# @app.route("/")
-# def accueil():
-#     theme = request.cookies.get("theme", "clair")
-#     print(theme)
-#     return render_template(
-#         "index.html",
-#         theme=theme,
-#     )
+    return render_template("index.html")
 
 
 @app.route('/broches')
@@ -69,28 +61,9 @@ def atomes():
     return render_template("atomes.html", moyenne=moyenne, colonnes=colonne, rangees=rangees)
 
 
-@app.route('/demo')
-def demo():
-    nom = request.args.get('nom', 'le monde')
-    return f"Bonjour {nom}!"
-
-THEMES = ["clair", "sombre", "matante"]
-
-@app.route("/theme")
+@app.route("/theme") # formulaire pour choisir le thème
 def theme():
-    return render_template("theme.html", themes=THEMES, erreur=None)
-
-from flask import Flask, request
-
-@app.route('/inscription')
-def entree_information():
-    return '''
-    <form method="POST" action="/inscription-action">
-    Nom: <input type="text" name="nom"><br>
-    Prénom: <input type="text" name="prenom"><br>
-    <input type="submit" value="Envoyer">
-    </form>
-    '''
+    return render_template("theme.html", themes=THEMES)
 
 
 @app.route("/theme-action", methods=["POST"])
@@ -124,8 +97,8 @@ def inject_theme():
 @app.errorhandler(404)
 def page_introuvable(error):
     return render_template("404.html"), 404
-
-
+    
+    
 @app.before_request
 def avant():
     print(f"Je reçoit cette requête: {request.method} {request.path} ")
@@ -140,21 +113,21 @@ def apres_requete(response):
 
 # Démo exception
 
-try:
-    montant = 100
-    x = 10
-    y = 0
-    print(montant / x)
-    print(montant / y) # Division par zéro Exception est raised
-    print("J'aime diviser par zéro")
-    raise Exception(message = "Erreur personnalisée")
-except ZeroDivisionError as erreur:
-    print('Erreur de division par zéro : ', erreur)
-except Exception as erreur:
-    print('Erreur inconnue : ', erreur)
-else:
-    # Bloc de code qui s'exécute si aucune exception n'est levée
-    print('Aucune exception levée!')
-finally:
-    # Bloc de code qui s'exécute toujours, qu'une exception soit levée ou non
-    print('Ce code sera toujours exécuté.')
+# try:
+#     montant = 100
+#     x = 10
+#     y = 0
+#     print(montant / x)
+#     print(montant / y) # Division par zéro Exception est raised
+#     print("J'aime diviser par zéro")
+#     raise Exception(message = "Erreur personnalisée")
+# except ZeroDivisionError as erreur:
+#     print('Erreur de division par zéro : ', erreur)
+# except Exception as erreur:
+#     print('Erreur inconnue : ', erreur)
+# else:
+#     # Bloc de code qui s'exécute si aucune exception n'est levée
+#     print('Aucune exception levée!')
+# finally:
+#     # Bloc de code qui s'exécute toujours, qu'une exception soit levée ou non
+#     print('Ce code sera toujours exécuté.') 
